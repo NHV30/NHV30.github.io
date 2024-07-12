@@ -18,11 +18,18 @@
         }
 
         .cv-container {
-            background-color: white;
+            background-color: #ffffff;
             padding: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             margin: 20px auto;
             max-width: 900px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 10px;
+        }
+
+        .cv-container:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
         }
 
         .banner {
@@ -33,6 +40,8 @@
             justify-content: space-between;
             align-items: center;
             position: relative;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
         }
 
         .banner h1 {
@@ -41,6 +50,8 @@
 
         .banner img {
             transition: transform 0.3s ease;
+            border: 3px solid white;
+            border-radius: 50%;
         }
 
         .banner img:hover {
@@ -51,6 +62,8 @@
             color: #008080;
             font-weight: bold;
             margin-bottom: 10px;
+            border-bottom: 2px solid #008080;
+            padding-bottom: 5px;
         }
 
         .info-item {
@@ -73,8 +86,10 @@
             background-color: #008080;
             color: white;
             text-align: center;
-            padding: 20px;
+            padding: 10px;
             margin-top: 20px;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
         }
 
         .text-muted {
@@ -159,8 +174,8 @@
                 <p>Chuyên ngành: <b>Quản trị kinh doanh</b></p>
                 <p>Bằng cấp: <b>Cử nhân đại học</b></p>
                 <p>Loại tốt nghiệp: <b>Khá</b></p>
-			</div>
-			<div class="col-md-4">
+            </div>
+            <div class="col-md-4">
                 <span class="text-muted">2013-01 - 2016-01</span>
             </div>
         </div>
@@ -178,8 +193,8 @@
                 <ul>
                     <li>Hoàn thành nhiệm vụ được giao</li>
                 </ul>
-			</div>
-			<div class="col-md-4">	
+            </div>
+            <div class="col-md-4">
                 <span class="text-muted">2018-01 - 2018-12</span>
                 <p class="text-muted">CHUYÊN VIÊN KINH DOANH</p>
             </div>
@@ -201,11 +216,13 @@
                         <p>Du lịch, nghe nhạc, thể thao, đọc sách</p>
                     </div>
                 </div>
+                </div>
             </div>
-        </div>
-		<div class="footer">
-			&copy; 2023 Nguyễn Thị Mai. All Rights Reserved.
+					<div class="footer">
+			&copy; 2023 Nguyễn Hoàng Việt. All Rights Reserved.
 		</div>
+        </div>
+
     </div>
 
     <button id="scrollTopBtn" title="Go to top"><i class="fas fa-chevron-up"></i></button>
@@ -214,30 +231,16 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-        // Fade-in effect for sections
-        const faders = document.querySelectorAll('.fade-in');
-
-        const appearOptions = {
-            threshold: 0,
-            rootMargin: "0px 0px -50px 0px"
-        };
-
-        const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
-            entries.forEach(entry => {
-                if (!entry.isIntersecting) {
-                    return;
-                } else {
-                    entry.target.classList.add('visible');
-                    appearOnScroll.unobserve(entry.target);
-                }
+        $(document).ready(function(){
+            $('[data-bs-toggle="tooltip"]').tooltip();
+            $('.cv-container .fade-in').each(function(i) {
+                var $item = $(this);
+                setTimeout(function() {
+                    $item.addClass('visible');
+                }, i * 200);
             });
-        }, appearOptions);
-
-        faders.forEach(fader => {
-            appearOnScroll.observe(fader);
         });
 
-        // Scroll to top button
         const scrollTopBtn = document.getElementById('scrollTopBtn');
 
         window.onscroll = function() {
@@ -253,8 +256,10 @@
         }
 
         scrollTopBtn.addEventListener('click', function() {
-            document.body.scrollTop = 0;
-            document.documentElement.scrollTop = 0;
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         });
     </script>
 </body>
