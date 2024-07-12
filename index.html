@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
+    <title>CV</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <!-- FontAwesome for icons -->
@@ -14,6 +14,7 @@
             background-color: #f4f4f4;
             margin: 0;
             padding: 0;
+            position: relative;
         }
 
         .cv-container {
@@ -31,17 +32,24 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
         }
-		.text-muted {
-            color: #008080 !important;
-        }
-		
+
         .banner h1 {
             margin: 0;
         }
 
+        .banner img {
+            transition: transform 0.3s ease;
+        }
+
+        .banner img:hover {
+            transform: scale(1.1);
+        }
+
         .section-title {
             color: #008080;
+            font-weight: bold;
             margin-bottom: 10px;
         }
 
@@ -65,24 +73,60 @@
             background-color: #008080;
             color: white;
             text-align: center;
-            padding: 20px 20px;
-            
+            padding: 20px;
+            margin-top: 20px;
         }
 
+        .text-muted {
+            color: #008080 !important;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #scrollTopBtn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #008080;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: none;
+            transition: opacity 0.3s ease;
+        }
+
+        #scrollTopBtn:hover {
+            background-color: #005959;
+        }
+
+        .progress-bar {
+            background-color: #008080;
+        }
     </style>
 </head>
 <body>
     <div class="container cv-container">
         <div class="row banner">
             <div class="col-md-8">
-                <h1>Nguyễn Hoàng Việt</h1>
+                <h1>NGUYỄN HOÀNG VIỆT</h1>
                 <p>NHÂN VIÊN KINH DOANH</p>
             </div>
             <div class="col-md-4 text-right">
-                <img src="avarta.jpg" alt="Avatar" class="img-fluid rounded-circle">
+                <img src="https://via.placeholder.com/120" alt="Avatar" class="img-fluid rounded-circle">
             </div>
         </div>
-        <div class="row section contact-info mt-4">
+        <div class="row section contact-info mt-4 fade-in">
             <div class="col-md-6">
                 <div class="info-item">
                     <i class="fas fa-venus"></i><p>Giới tính: <b>Nam</b></p>
@@ -101,29 +145,29 @@
                 </div>
             </div>
         </div>
-        <div class="row section mt-4" id="career-objective">
+        <div class="row section mt-4 fade-in" id="career-objective">
             <div class="col-md-12">
                 <h2 class="section-title">MỤC TIÊU NGHỀ NGHIỆP</h2>
                 <p>- Mong muốn học hỏi kinh nghiệm ở môi trường làm việc chuyên nghiệp, năng động.</p>
                 <p>- Có cơ hội thăng tiến cao, thành công trong công việc.</p>
             </div>
         </div>
-        <div class="row section mt-4" id="education">
-             <div class="col-md-9">
+        <div class="row section mt-4 fade-in" id="education">
+            <div class="col-md-8">
                 <h2 class="section-title">HỌC VẤN</h2>
-                <h3><b>ĐẠI HỌC KINH TẾ</b></h3>
+                <h3>ĐẠI HỌC KINH TẾ</h3>
                 <p>Chuyên ngành: <b>Quản trị kinh doanh</b></p>
                 <p>Bằng cấp: <b>Cử nhân đại học</b></p>
                 <p>Loại tốt nghiệp: <b>Khá</b></p>
-				</div>
-			<div class="col-md-3">
-                <h6 class="text-muted">2013-01 - 2016-01</h6>
+			</div>
+			<div class="col-md-4">
+                <span class="text-muted">2013-01 - 2016-01</span>
             </div>
         </div>
-        <div class="row section mt-4" id="work-experience">
-            <div class="col-md-9">
+        <div class="row section mt-4 fade-in" id="work-experience">
+            <div class="col-md-8">
                 <h2 class="section-title">KINH NGHIỆM LÀM VIỆC</h2>
-                <h3><b>SIÊU VIỆT GROUP</b></h3>
+                <h3>SIÊU VIỆT GROUP</h3>
                 <p>Mô tả công việc:</p>
                 <ul>
                     <li>Liên hệ với khách hàng để tư vấn và tìm hiểu nhu cầu khách hàng</li>
@@ -135,12 +179,12 @@
                     <li>Hoàn thành nhiệm vụ được giao</li>
                 </ul>
 			</div>
-			<div class="col-md-3">
-                <h6 class="text-muted">2018-01 - 2018-12</h6>
-                <h6 class="text-muted">CHUYÊN VIÊN KINH DOANH</h6>
+			<div class="col-md-4">	
+                <span class="text-muted">2018-01 - 2018-12</span>
+                <p class="text-muted">CHUYÊN VIÊN KINH DOANH</p>
             </div>
         </div>
-        <div class="row section mt-4" id="skills-interests">
+        <div class="row section mt-4 fade-in" id="skills-interests">
             <div class="col-md-6">
                 <h2 class="section-title">KỸ NĂNG</h2>
                 <div class="skills">
@@ -159,10 +203,11 @@
                 </div>
             </div>
         </div>
-		<div class="footer">    
-        </div>
+		<div class="footer">
+		</div>
     </div>
 
+    <button id="scrollTopBtn" title="Go to top"><i class="fas fa-chevron-up"></i></button>
     <!-- Bootstrap JS, Popper.js, and jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
